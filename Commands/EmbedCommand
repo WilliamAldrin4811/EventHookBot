@@ -1,0 +1,22 @@
+package commands;
+
+import net.dv8tion.jda.api.EmbedBuilder;
+import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
+import net.dv8tion.jda.api.hooks.ListenerAdapter;
+
+import java.awt.*;
+
+public class Embed extends ListenerAdapter {
+
+
+    public void OnGuildMeaageReceived(GuildMessageReceivedEvent e){
+        if (e.getMessage().getContentRaw().equalsIgnoreCase("!embed")) {
+            EmbedBuilder eb = new EmbedBuilder();
+            eb.setTitle("First embed");
+            eb.setColor(Color.red);
+            eb.addField("Event name", "event", true);
+            e.getChannel().sendMessage(eb.build()).queue();
+        }
+    }
+
+}
